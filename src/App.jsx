@@ -1,14 +1,14 @@
-import { Home } from "./Pages";
-import { Navbar, Product } from "./components";
+import { Footer, Navbar } from "./components";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <div className="">
       <Navbar />
       <div className="max-w-7xl mx-auto">
-        <Home />
-        <Product />
+        <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }
