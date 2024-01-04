@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../../assets/loading.svg";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,6 +15,11 @@ const ProductDetail = () => {
 
     fetchProduct();
   }, [id]);
+
+  if(!Object.keys(product).length > 0)  
+  return  <div className="flex justify-center my-96">
+            <img src={Loading} alt="" className="w-[100px]"/>
+          </div>
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
