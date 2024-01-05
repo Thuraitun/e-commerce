@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const carts = JSON.parse(localStorage.getItem('cart')) || [];
+  const [ cartCount, setCartCount ] = useState(0)
+
+  useEffect(() => {
+    const totalQuantity = carts.reduce((acc, item) => {
+      return acc + item.quantity;
+    }, 0);
+    setCartCount(totalQuantity)
+  }, [carts])
+
   return (
     <>
       <nav className="py-4 sticky top-0 shadow-md z-10 bg-white">
@@ -28,7 +39,7 @@ const Navbar = () => {
             </svg>
             <div className="absolute -top-3 -right-4">
               <span className=" bg-red-500 text-white rounded-full p-1 text-sm">
-                10
+                {cartCount}
               </span>
             </div>
           </Link>
