@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UseCart } from "../../Contexts/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate()
+  const {carts, setCarts} = UseCart()
   const [ total, setTotal ] = useState(0)
-  const carts = JSON.parse(localStorage.getItem('cart')) || [];
 
   useEffect(() => {
     const totalPrice = carts.reduce((acc, item) => {
@@ -17,7 +18,7 @@ const Cart = () => {
   const percent =  ((1 * total)/100).toFixed(2)
 
   const handleIncrement = (id) => {
-    const updateCart = carts.map(item => {
+    const updatedCart = carts.map(item => {
 
       if(item.id === id) {
    
@@ -29,12 +30,12 @@ const Cart = () => {
       return item;
     })
 
-    localStorage.setItem('cart', JSON.stringify(updateCart));
+    setCarts(updatedCart);
     navigate('/cart')
   }
 
   const handleDecrement = (id) => {
-    const updateCart = carts.map(item => {
+    const updatedCart = carts.map(item => {
       if(item.id === id) {
         if(item?.quantity > 1) {
           return {
@@ -50,13 +51,13 @@ const Cart = () => {
       
     })
 
-    localStorage.setItem('cart', JSON.stringify(updateCart));
+    setCarts(updatedCart);
     navigate('/cart')
   }
 
   const handleRemove = (id) => {
     const updatedCart = carts.filter(item => item.id !== id)
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCarts(updatedCart);
     navigate('/cart')
   }
 

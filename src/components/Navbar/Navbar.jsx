@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UseCart } from "../../Contexts/CartContext";
 
 const Navbar = () => {
-  const carts = JSON.parse(localStorage.getItem('cart')) || [];
+  const {carts} = UseCart();
   const [ cartCount, setCartCount ] = useState(0)
 
   useEffect(() => {
