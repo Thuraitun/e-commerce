@@ -24,7 +24,7 @@ const Home = () => {
       return p;
     }  
     if(search){
-      return p.title.toUpperCase().includes(search.toUpperCase()) || p.category.toUpperCase().includes(search.toUpperCase());
+      return p.title.toUpperCase().trim().includes(search.toUpperCase().trim()) || p.category.toUpperCase().trim().includes(search.toUpperCase().trim());
     }
   })
 
@@ -32,7 +32,7 @@ const Home = () => {
     <>
       <h1 className="sm:text-3xl text-2xl font-medium text-center title-font mb-4 text-orange-500 my-6">Products</h1>
       <div className="flex justify-end">
-        <input value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="Search Products ......." className="input border border-orange-500 focus:border-orange-500 focus:outline-none w-full max-w-xs" />
+        <input value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="Search Products ......." className="input border border-orange-500 focus:border-orange-500 focus:outline-none w-full md:w-[400px]" />
       </div>
       { searchProducts.length > 0 ?
         <Product searchProducts={searchProducts} /> :
