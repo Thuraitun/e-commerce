@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../assets/loading.svg";
+import { UseCart } from "../../Contexts/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { updateCarts } = UseCart();
   const [product, setProduct] = useState({});
   const navigate = useNavigate();
 
@@ -32,9 +34,10 @@ const ProductDetail = () => {
         return item;
       })
 
-      localStorage.setItem('cart', JSON.stringify(updateCart));
+      updateCarts(updateCart);
     } else {
-      localStorage.setItem('cart', JSON.stringify([ ...cart, { ...product, quantity: 1}]));
+      const updatedCart = [ ...cart, { ...product, quantity: 1}];
+      updateCarts(updatedCart);
     }
     if(redirect) {
       navigate('/cart')

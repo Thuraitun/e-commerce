@@ -20,12 +20,12 @@ const Home = () => {
   return (
     <>
       <h1 className="sm:text-3xl text-2xl font-medium text-center title-font mb-4 text-gray-900 my-6">Products</h1>
-        { products.length > 0 ?
-          <Product products={products} /> :
-          <div className="flex justify-center my-4 min-h-screen">
-            <img src={Loading} alt="" className="w-[100px]"/>
-          </div>
-        }
+      { products.length > 0 ?
+        <Product products={products} /> :
+        <div className="flex justify-center my-4 min-h-screen">
+          <img src={Loading} alt="" className="w-[100px]"/>
+        </div>
+      }
     </>
   );
 }

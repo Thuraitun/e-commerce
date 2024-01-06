@@ -4,7 +4,7 @@ import { UseCart } from "../../Contexts/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate()
-  const {carts, setCarts} = UseCart()
+  const {carts, updateCarts} = UseCart()
   const [ total, setTotal ] = useState(0)
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Cart = () => {
       return item;
     })
 
-    setCarts(updatedCart);
+    updateCarts(updatedCart);
     navigate('/cart')
   }
 
@@ -51,13 +51,13 @@ const Cart = () => {
       
     })
 
-    setCarts(updatedCart);
+    updateCarts(updatedCart);
     navigate('/cart')
   }
 
   const handleRemove = (id) => {
     const updatedCart = carts.filter(item => item.id !== id)
-    setCarts(updatedCart);
+    updateCarts(updatedCart);
     navigate('/cart')
   }
 
@@ -67,7 +67,7 @@ const Cart = () => {
           There is no cart
         </div>
         <div className="flex my-24">
-          <Link to="/" className="py-1 px-3 border border-teal-500 flex space-x-1">
+          <Link to="/" className="py-2 px-3 border border-teal-500 flex space-x-1 hover:text-white hover:bg-teal-500">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
             </svg>
@@ -164,7 +164,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="flex my-6">
-          <Link to="/" className="py-1 px-3 border border-teal-500 flex space-x-1">
+          <Link to="/" className="py-2 px-3 border border-teal-500 flex space-x-1 hover:text-white hover:bg-teal-500">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
             </svg>
