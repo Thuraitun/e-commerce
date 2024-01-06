@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="max-w-[1600px] mx-auto px-4 md:px-0">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-0">
         <Outlet />
       </div>
       <Footer />

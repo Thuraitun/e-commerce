@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="py-4 sticky top-0 shadow-md z-10 bg-white">
-        <div className="max-w-[1600px] mx-auto flex justify-between items-center px-6 md:px-0">
+        <div className="max-w-[1400px] mx-auto flex justify-between items-center px-6 lg:px-6">
           <div className="">
             <Link to="/" className="text-2xl text-gray-600 uppercase font-bold">
               E- <span className="text-orange-500">commerce</span>

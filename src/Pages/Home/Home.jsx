@@ -32,7 +32,7 @@ const Home = () => {
     <>
       <h1 className="sm:text-3xl text-2xl font-medium text-center title-font mb-4 text-orange-500 my-6">Products</h1>
       <div className="flex justify-end">
-        <input value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="Search Products ......." className="input border border-orange-500 focus:border-orange-500 focus:outline-none w-full md:w-[400px]" />
+        <input value={search} onChange={e => setSearch(e.target.value)} type="text" placeholder="Search Products ......." className="input border border-orange-500 focus:border-orange-500 focus:outline-none w-full md:w-[260px]" />
       </div>
       { searchProducts.length > 0 ?
         <Product searchProducts={searchProducts} /> :
