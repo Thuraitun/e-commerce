@@ -16,9 +16,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="py-4 sticky top-0 shadow-md z-10 bg-white">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="max-w-[1600px] mx-auto flex justify-between items-center">
           <div className="">
-            <Link to="/" className="text-2xl">
+            <Link to="/" className="text-2xl text-gray-600 uppercase font-bold">
               E- <span className="text-orange-500">commerce</span>
             </Link>
           </div>

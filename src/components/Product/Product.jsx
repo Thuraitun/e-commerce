@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const Product = ({ products = [] }) => {
+const Product = ({ searchProducts = [] }) => {
   return (
     <section className="text-gray-600 body-font min-h-screen">
         <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-wrap -m-4">
-                
-                { products.map(product => {
+                { searchProducts.map(product => {
                     const { id , title, price, category, image } = product
                     return (
                         <div key={id} className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-sm cursor-pointer">
