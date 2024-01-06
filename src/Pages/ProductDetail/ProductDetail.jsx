@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../assets/loading.svg";
 import { UseCart } from "../../Contexts/CartContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -19,6 +21,8 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
+  const notify = () => toast("Added one item");
+
   const handleCart = (product, redirect) => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const isProductExit = cart.find(item => item.id === product.id);
@@ -33,7 +37,7 @@ const ProductDetail = () => {
         }
         return item;
       })
-
+      notify()
       updateCarts(updateCart);
     } else {
       const updatedCart = [ ...cart, { ...product, quantity: 1}];
@@ -44,6 +48,8 @@ const ProductDetail = () => {
     }
   }
 
+  
+
   if(!Object.keys(product).length > 0)  
   return  <div className="flex justify-center my-96">
             <img src={Loading} alt="" className="w-[100px]"/>
@@ -51,6 +57,7 @@ const ProductDetail = () => {
 
   return (
     <section className="text-gray-600 body-font overflow-hidden min-h-[88vh]">
+      
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <img
@@ -203,12 +210,18 @@ const ProductDetail = () => {
                     ${product?.price}
                 </span>
                 <div className="flex space-x-3">
-                    <button onClick={() => handleCart(product, true)} className="flex ml-auto text-white bg-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                        Buy Now
-                    </button>
-                    <button onClick={() => handleCart(product)} className="flex ml-auto hover:text-white  border-2 border-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                        Add to cart
-                    </button>
+                    <div className="">
+                      <button onClick={() => handleCart(product, true)} className="flex ml-auto text-white bg-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                          Buy Now
+                      </button>
+                      <ToastContainer />
+                    </div>
+                    <div className="">
+                      <button onClick={() => handleCart(product)} className="flex ml-auto hover:text-white  border-2 border-indigo-500  py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                          Add to cart
+                      </button>
+                      <ToastContainer />
+                    </div>
                 </div>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg
